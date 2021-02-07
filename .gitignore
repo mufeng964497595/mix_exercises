@@ -1,0 +1,6 @@
+*code-workspace
+.vscode
+blade-bin
+build32_release/
+build
+build.ninja
