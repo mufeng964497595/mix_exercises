@@ -14,7 +14,7 @@ function install_blade() {
     check_blade
     if [ $? -eq 0 ]; then
         echo "blade had intalled"
-        return
+        return 0
     fi
 
     echo "ready to install blade"
@@ -47,7 +47,7 @@ function install_ninja() {
     check_ninja
     if [ $? -eq 0 ]; then
         echo "ninja had installed"
-        return
+        return 0
     fi
 
     echo "ready to install ninja"
@@ -69,6 +69,8 @@ function install_ninja() {
 }
 
 function build_normal() {
+    # 编译前更新子模块代码
+    git submodule update --init --recursive
     # 编译需要安装blade和ninja
     install_blade
     if [ $? -ne 0 ]; then
@@ -80,8 +82,6 @@ function build_normal() {
         return -1
     fi
 
-    # 编译前更新子模块代码
-    git submodule update --init --recursive
     blade build 2>&1
 }
 
