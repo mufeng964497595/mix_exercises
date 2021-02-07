@@ -80,6 +80,8 @@ function build_normal() {
         return -1
     fi
 
+    # 编译前更新子模块代码
+    git submodule update --init --recursive
     blade build 2>&1
 }
 

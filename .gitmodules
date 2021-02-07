@@ -1,0 +1,9 @@
+[submodule "blade-build"]
+	path = blade-build
+	url = git@github.com:chen3feng/blade-build.git
+[submodule "ninja"]
+	path = ninja
+	url = git@github.com:ninja-build/ninja.git
+[submodule "cpp_common"]
+	path = cpp_common
+	url = git@github.com:mufeng964497595/cpp_common.git
