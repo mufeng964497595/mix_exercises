@@ -6,7 +6,9 @@ cc_binary (
         'cpp_common/demo/test_uniq_id.cpp',
     ],
     deps = [
-        '#pthread',
         '//cpp_common:cpp_common',
+    ],
+    extra_linkflags = [
+        '-pthread',
     ],
 )
