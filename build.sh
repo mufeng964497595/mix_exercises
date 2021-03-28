@@ -87,6 +87,7 @@ function build_normal() {
 
 function blade_clean() {
     blade clean 2>&1
+    rm -rf build64_release/*
 }
 
 ########### 主流程 ###########

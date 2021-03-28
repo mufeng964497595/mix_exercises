@@ -12,3 +12,32 @@ cc_binary (
         '-pthread',
     ],
 )
+
+cc_binary (
+    name = 'http_server',
+    srcs = [
+        'servers/main.cpp',
+    ],
+    deps = [
+        ':http_server_lib',
+        '#gflags',
+        '#brpc',
+        '#protobuf',
+    ],
+)
+
+cc_library (
+    name = 'http_server_lib',
+    srcs = [
+        'servers/http_server.cpp',
+    ],
+    hdrs = [
+        'incubator-brpc/src/butil/logging.h',
+        'incubator-brpc/src/brpc/server.h',
+        'incubator-brpc/src/brpc/restful.h',
+        'servers/http_server.h',
+    ],
+    deps = [
+        '//proto:gateway_proto',
+    ],
+)

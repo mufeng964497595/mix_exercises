@@ -7,3 +7,6 @@
 [submodule "cpp_common"]
 	path = cpp_common
 	url = git@github.com:mufeng964497595/cpp_common.git
+[submodule "incubator-brpc"]
+	path = incubator-brpc
+	url = git@github.com:mufeng964497595/incubator-brpc.git
