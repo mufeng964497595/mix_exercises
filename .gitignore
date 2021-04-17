@@ -1,6 +1,7 @@
 *code-workspace
 .vscode
 blade-bin
-build32_release/
+build64_release/
 build
 build.ninja
+cp_bin.sh

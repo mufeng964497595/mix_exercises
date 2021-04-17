@@ -1,0 +1,12 @@
+syntax="proto2";
+package gateway;
+
+option cc_generic_services = true;
+
+message HttpRequest {};
+message HttpResponse {};
+
+service HttpService {
+  rpc Echo(HttpRequest) returns (HttpResponse);
+};
+
