@@ -1,0 +1,34 @@
+# 自定义srpc proto编译规则
+# 入参：
+#   name：编译后lib的名字
+#   srcs：proto源文件名，数组类型
+#   dir:  proto源文件所在相对路径，BLADE_ROOT为根路径
+def srpc_proto_library(name = '', srcs = [], dir = '.'):
+    cmd = ''
+    head = []
+    cc = []
+    for pb in srcs:
+        cmd += ' protoc ' + pb + ' --cpp_out=$BUILD_DIR/proto --proto_path=' + dir + ' '
+        cmd += ' && '
+        cmd += ' srpc_generator protobuf ' + dir + '/' + pb + ' $BUILD_DIR/proto '
+        cmd += ' && '
+        pb_tmp = pb[:pb.rfind('.proto')]
+        head.append(pb_tmp + '.srpc.h')
+        head.append(pb_tmp + '.pb.h')
+        cc.append(pb_tmp + '.pb.cc')
+    cmd = cmd[:cmd.rfind('&&')]  # 去掉尾部的' && '
+    gen_rule(
+        name = 'srpc_' + name,
+        cmd = cmd,
+        outs = head + cc,
+    )
+
+    cc_library(
+        name = name,
+        srcs = cc,
+        deps = [
+            '//proto:srpc_' + name,
+        ],
+        hdrs = head
+    )
+    

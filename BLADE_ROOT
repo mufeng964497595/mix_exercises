@@ -5,7 +5,11 @@ global_config (
 )
 
 cc_config(
-    extra_incs=['incubator-brpc/src'],
+    extra_incs=[
+        'incubator-brpc/src',
+        'srpc/_include',
+        'srpc/workflow/_include',
+    ],
     warnings = [
         '-Wall',
         '-Wextra',
@@ -53,7 +57,7 @@ cc_config(
         #'-Woverloaded-virtual',
         '-Wvla',
         '-Werror=conversion-null',
-        '-Werror=non-virtual-dtor',
+        #'-Werror=non-virtual-dtor',
         #'-Werror=overloaded-virtual',
         '-Werror=reorder',
         #'-Werror=vla',

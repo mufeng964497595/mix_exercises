@@ -10,3 +10,7 @@
 [submodule "incubator-brpc"]
 	path = incubator-brpc
 	url = git@github.com:mufeng964497595/incubator-brpc.git
+[submodule "srpc"]
+	path = srpc
+	url = git@github.com:sogou/srpc.git
+    ignore = dirty

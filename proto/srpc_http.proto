@@ -1,0 +1,16 @@
+syntax="proto2";
+package gateway;
+
+message SrpcHttpRequest {
+  optional int32 number_a = 1;
+  optional int32 number_b = 2;
+};
+message SrpcHttpResponse {
+  required int32 err_code = 1;
+  required string err_msg = 2;
+  optional int32 result = 3;
+};
+
+service SrpcHttpService {
+  rpc Add(SrpcHttpRequest) returns (SrpcHttpResponse);
+};

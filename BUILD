@@ -26,6 +26,20 @@ cc_binary (
     ],
 )
 
+cc_binary (
+    name = 'srpc_http_server',
+    srcs = [
+        'servers/srpc_server.cpp',
+    ],
+    deps = [
+        '//proto:srpc_proto',
+        #'//proto:srpc_http_pb_proto',
+        #'//proto:srpc_http_proto',
+        '#srpc',
+        '#protobuf',
+    ],
+)
+
 cc_library (
     name = 'http_server_lib',
     srcs = [
