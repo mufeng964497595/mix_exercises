@@ -5,10 +5,11 @@ global_config (
 )
 
 cc_config(
-    extra_incs=[
+    extra_incs = [
         'incubator-brpc/src',
         'srpc/_include',
         'srpc/workflow/_include',
+        'third_party/rapidjson/include',
     ],
     warnings = [
         '-Wall',
@@ -69,7 +70,12 @@ cc_config(
     benchmark_main_libs=[],
     cppflags = [
         '-faligned-new',
-    ]
+    ],
+    hdr_dep_missing_severity = 'warning',
+)
+
+cc_library_config(
+    hdrs_missing_severity = 'warning',
 )
 
 """

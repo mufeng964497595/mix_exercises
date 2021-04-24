@@ -6,15 +6,15 @@
  * Copyright (c) 2021 huangweifeng Inc.
  */
 
-#include "servers/http_server.h"
+#include "demo/brpc/http_server.h"
 
 #include <gflags/gflags.h>
 
 #include <string>
 
-#include "butil/logging.h"
-#include "brpc/server.h"
-#include "brpc/restful.h"
+#include "incubator-brpc/src/butil/logging.h"
+#include "incubator-brpc/src/brpc/server.h"
+#include "incubator-brpc/src/brpc/restful.h"
 #include "proto/http.pb.h"
 
 void gateway::HttpServiceImpl::Echo(google::protobuf::RpcController* cntl_base,

@@ -1,0 +1,48 @@
+// ID生成器rpc接口协议
+syntax="proto2";
+
+package mix_exer;
+
+// 注册id生成器的业务来源
+message RegistSourceReq {
+  required string source_id = 1;  // 来源id，业务的唯一标识
+  required uint64 init_id = 2;    // 起始id，后续分配的id都不小于起始id
+  required int32 step = 3;        // id生成器步长，即一次分配多长范围的id
+  required string desc = 4;       // 业务描述
+}
+message RegistSourceResp {
+  enum ErrCodeEnum {
+    SUCCESS = 0;  // 成功
+    // ============ 业务逻辑错误 > 0 =========== //
+    EMPTY_SOURCE_ID = 1;    // 入参source_id为空
+    STEP_OUT_OF_LIMIT = 2;  // 入参step不在限制允许的范围内
+
+    // ============ 系统内部错误码 < 0 =========== //
+  }
+  required ErrCodeEnum err_code = 1;   // 错误码
+  required string err_msg = 2;  // 错误原因
+}
+
+// 生成id序列
+message GeneIdReq {
+  required string source_id = 1;  // 来源id，业务的唯一标识
+}
+message GeneIdResp {
+  enum ErrCodeEnum{
+    SUCCESS = 0;  // 成功
+    // ============ 业务逻辑错误 > 0 =========== //
+
+    // ============ 系统内部错误码 < 0 =========== //
+  }
+  required ErrCodeEnum err_code = 1;  // 错误码
+  required string err_msg = 2;  // 错误原因
+  required uint64 begin_id = 3;  // 本次分配到的起始id
+  required int32 step = 4;  // 本次分配的id步长，即分配到的id是[begin_id, begin_id+step)左闭右开区间
+}
+
+service GeneratorId {
+  // 注册id生成器的业务来源
+  rpc Regist(RegistSourceReq) returns (RegistSourceResp);
+  // 生成id序列
+  rpc GeneId(GeneIdReq) returns (GeneIdResp);
+}

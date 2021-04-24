@@ -15,3 +15,10 @@ srpc_proto_library(
     dir = 'proto'
 )
 
+srpc_proto_library(
+    name = 'id_generator_proto',
+    srcs = [
+        'id_generator.proto',
+    ],
+    dir = 'proto'
+)

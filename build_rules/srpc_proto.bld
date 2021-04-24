@@ -19,6 +19,7 @@ def srpc_proto_library(name = '', srcs = [], dir = '.'):
     cmd = cmd[:cmd.rfind('&&')]  # 去掉尾部的' && '
     gen_rule(
         name = 'srpc_' + name,
+        srcs = srcs,
         cmd = cmd,
         outs = head + cc,
     )
@@ -31,4 +32,3 @@ def srpc_proto_library(name = '', srcs = [], dir = '.'):
         ],
         hdrs = head
     )
-    

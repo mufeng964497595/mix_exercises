@@ -13,10 +13,10 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "servers/http_server.h"
+#include "demo/brpc/http_server.h"
 
-#include "butil/logging.h"
-#include "brpc/restful.h"
+#include "incubator-brpc/src/butil/logging.h"
+#include "incubator-brpc/src/brpc/restful.h"
 
 DEFINE_int32(port, 8010, "TCP Port of this server");
 DEFINE_int32(idle_timeout_s, -1, "Connection will be closed if there is no "
